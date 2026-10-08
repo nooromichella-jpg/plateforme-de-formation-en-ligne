@@ -1,0 +1,82 @@
+{
+  "entities": {
+    "courses": {
+      "title": "Course",
+      "description": "Formations en ligne SkillHub",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" },
+        "shortDescription": { "type": "string" },
+        "category": { "type": "string" },
+        "level": { "type": "string" },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "thumbnail": { "type": "string" },
+        "language": { "type": "string" },
+        "durationMinutes": { "type": "number" },
+        "lessonsCount": { "type": "number" },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" }
+      },
+      "required": ["id", "title", "price"]
+    },
+    "enrollments": {
+      "title": "Enrollment",
+      "description": "Inscriptions aux formations par les étudiants",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "courseId": { "type": "string" },
+        "status": { "type": "string" },
+        "progress": { "type": "number" }
+      },
+      "required": ["id", "userId", "courseId", "status"]
+    },
+    "favorites": {
+      "title": "Favorite",
+      "description": "Cours favoris des utilisateurs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "courseId": { "type": "string" }
+      },
+      "required": ["id", "userId", "courseId"]
+    },
+    "contacts": {
+      "title": "ContactMessage",
+      "description": "Demandes de contact envoyées",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "email", "message"]
+    }
+  },
+  "firestore": {
+    "/courses/{courseId}": {
+      "schema": "courses",
+      "description": "Collection des formations en ligne du catalogue SkillHub"
+    },
+    "/enrollments/{enrollmentId}": {
+      "schema": "enrollments",
+      "description": "Collection des inscriptions des apprenants"
+    },
+    "/favorites/{favoriteId}": {
+      "schema": "favorites",
+      "description": "Collection des favoris utilisateurs"
+    },
+    "/contacts/{contactId}": {
+      "schema": "contacts",
+      "description": "Collection des messages de contact"
+    }
+  }
+}

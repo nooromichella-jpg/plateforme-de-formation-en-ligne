@@ -1,0 +1,24 @@
+import React from 'react';
+
+export const metadata = {
+  title: "SkillHub - Plateforme Certifiante d'E-Learning & IA",
+  description: "Formations tech d'excellence : Web, IA, DevOps, UI/UX, Data Science. Parcours certifiants avec SkillBot IA et tarifs en Ariary (Ar).",
+};
+
+/**
+ * Root Layout Next.js App Router (src/app/layout.tsx)
+ * Définit la structure racine HTML pour l'écosystème Next.js.
+ */
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="fr" className="dark">
+      <body className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased">
+        {children}
+      </body>
+    </html>
+  );
+}

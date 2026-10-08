@@ -1,0 +1,6 @@
+{
+  "name": "SkillHub - Plateforme de Formation en Ligne",
+  "description": "Plateforme d'apprentissage en ligne moderne avec catalogue de formations interactif et assistant pédagogique IA propulsé par Google Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

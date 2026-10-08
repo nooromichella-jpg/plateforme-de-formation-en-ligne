@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper pour identifier les administrateurs
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.email == 'nooromichella@gmail.com' ||
+        request.auth.token.email.matches('.*admin.*') ||
+        request.auth.token.admin == true
+      );
+    }
+
+    // Les utilisateurs ne peuvent lire et écrire que leurs propres inscriptions
+    match /enrollments/{enrollmentId} {
+      allow read: if request.auth != null && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    // Favoris / Saved courses de l'utilisateur
+    match /favorites/{favoriteId} {
+      allow read: if request.auth != null && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    // Messages de contact envoyés
+    match /contacts/{contactId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Catalogue des cours public en lecture, création/modification/suppression par admin et portail d'administration
+    match /courses/{courseId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Senior Designer Architectural System: Subtle Hairline Grid & Noise Texture
+   ========================================================================== */
+
+/* Procedural Tactile Noise (film grain, zero plastic AI look) */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Precision 40px Fine Hairline Architectural Grid */
+.bg-grid-architect-dark {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+.bg-grid-architect-light {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
+}
+
+/* Radial Vignette / Mask Dissolve (grid dissolves into canvas) */
+.mask-radial-fade {
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 15%, black 25%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 15%, black 25%, transparent 85%);
+}
+
+.mask-linear-fade {
+  mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
+}
+
+/* Architectural Top Hairline Accent */
+.hairline-top-dark {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+}
+
+.hairline-top-light {
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+}
